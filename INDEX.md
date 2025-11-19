@@ -34,6 +34,8 @@ Bem-vindo ao projeto Insanos Server! Este índice organiza toda a documentação
 |-----------|-----------|-------------|
 | [COMMANDS.md](COMMANDS.md) | Comandos úteis | Desenvolvimento diário |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Soluções de problemas | **Quando der erro** |
+| [LOGGING_GUIDE.md](LOGGING_GUIDE.md) | Sistema de logs | **Debug e monitoramento** |
+| [TESTING_GUIDE.md](TESTING_GUIDE.md) | Guia de testes | **Testes e QA** |
 | [api-tests.http](api-tests.http) | Testes de API | Testar endpoints |
 | [.env.example](.env.example) | Variáveis de ambiente | Configuração |
 

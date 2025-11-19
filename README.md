@@ -8,6 +8,8 @@ Aplicação Spring Boot para autenticação de usuários com JWT, preparada para
 
 - 🚀 **[Quick Start](QUICKSTART.md)** - Comece aqui! Guia rápido em 3 passos
 - 📘 **[Guia de Integração React](REACT_INTEGRATION_GUIDE.md)** - Integração completa com frontend
+- 📊 **[Guia de Logs](LOGGING_GUIDE.md)** - Sistema de logs estruturados
+- 🧪 **[Guia de Testes](TESTING_GUIDE.md)** - Testes unitários e de integração
 - 📝 **[Resumo da Implementação](IMPLEMENTATION_SUMMARY.md)** - Visão geral do projeto
 - 💻 **[Exemplos de Código](FRONTEND_INTEGRATION.js)** - Código React pronto para usar
 - 🧪 **[Testes de API](api-tests.http)** - Exemplos de requisições HTTP

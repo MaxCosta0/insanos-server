@@ -32,21 +32,43 @@ public class JwtUtils {
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        return Jwts.builder()
+        logger.debug("🔑 Gerando JWT token para usuário: {}", userPrincipal.getUsername());
+
+        Date issuedAt = new Date();
+        Date expiresAt = new Date(issuedAt.getTime() + jwtExpirationMs);
+
+        logger.debug("Token será válido de {} até {}", issuedAt, expiresAt);
+
+        String token = Jwts.builder()
                 .subject(userPrincipal.getUsername())
-                .issuedAt(new Date())
-                .expiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .issuedAt(issuedAt)
+                .expiration(expiresAt)
                 .signWith(getSigningKey())
                 .compact();
+
+        logger.info("✅ JWT token gerado com sucesso para: {} (expira em {})",
+            userPrincipal.getUsername(), expiresAt);
+
+        return token;
     }
 
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .getSubject();
+        logger.debug("🔍 Extraindo username do JWT token");
+
+        try {
+            String username = Jwts.parser()
+                    .verifyWith(getSigningKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload()
+                    .getSubject();
+
+            logger.debug("Username extraído do token: {}", username);
+            return username;
+        } catch (Exception e) {
+            logger.error("❌ Erro ao extrair username do token: {}", e.getMessage());
+            throw e;
+        }
     }
 
     public boolean validateJwtToken(String authToken) {
