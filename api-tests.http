@@ -1,0 +1,96 @@
+### Variáveis
+@baseUrl = http://localhost:8080
+@token =
+
+### ============================================
+### USUÁRIO PADRÃO (Criado automaticamente)
+### Username: insanos
+### Email: user@insanos.com
+### Password: insanos321
+### ============================================
+
+### 1. Login com usuário padrão (por username)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "insanos",
+  "password": "insanos321"
+}
+
+### 2. Login com usuário padrão (por email)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user@insanos.com",
+  "password": "insanos321"
+}
+
+### 3. Login com admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### ============================================
+### REGISTRO DE NOVOS USUÁRIOS
+### ============================================
+
+### 4. Registrar novo usuário
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "senha123"
+}
+
+### 2. Registrar administrador
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "email": "admin@example.com",
+  "password": "admin123",
+  "roles": ["admin"]
+}
+
+### 3. Login com usuário
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "senha123"
+}
+
+### 4. Login com admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### 5. Verificar autenticação
+GET {{baseUrl}}/api/auth/check
+Authorization: Bearer {{token}}
+
+### 6. Acesso público
+GET {{baseUrl}}/api/test/all
+
+### 7. Acesso de usuário (requer autenticação)
+GET {{baseUrl}}/api/test/user
+Authorization: Bearer {{token}}
+
+### 8. Acesso de administrador (requer role ADMIN)
+GET {{baseUrl}}/api/test/admin
+Authorization: Bearer {{token}}
+
